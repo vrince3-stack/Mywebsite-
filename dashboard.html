@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard - Crypto Invest</title>
+<style>
+body{margin:0;font-family:Arial,sans-serif;background:#111;color:white;}
+nav{background:#222;padding:1rem;display:flex;justify-content:space-between;align-items:center;}
+nav .menu{cursor:pointer;font-size:28px;}
+nav .title{font-size:20px;font-weight:bold;}
+.sidebar{height:100%;width:0;position:fixed;top:0;left:0;background:#222;overflow-x:hidden;transition:.3s;padding-top:60px;z-index:1000;}
+.sidebar a{display:flex;align-items:center;padding:15px 25px;text-decoration:none;font-size:18px;color:#ccc;transition:.3s;}
+.sidebar a:hover{background:#333;color:#0f0;}
+.sidebar a span{margin-right:10px;font-size:20px;}
+.sidebar .closebtn{position:absolute;top:10px;right:20px;font-size:30px;cursor:pointer;}
+.dashboard-container{padding:2rem;}
+.balances{display:flex;gap:2rem;flex-wrap:wrap;justify-content:center;margin-bottom:3rem;}
+.balance-card{background:#222;padding:2rem;border-radius:12px;width:200px;text-align:center;box-shadow:0 4px 8px rgba(0,255,0,0.2);}
+.balance-card h3{color:#0f0;margin-bottom:.5rem;}
+.balance-card p{color:#ccc;font-size:1.2rem;}
+.actions{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;}
+.action-btn{background:#0f0;color:black;padding:1rem 2rem;border-radius:10px;font-weight:bold;cursor:pointer;text-decoration:none;transition:.3s;}
+.action-btn:hover{background:#0c0;}
+footer{background:#222;text-align:center;padding:1rem;color:#888;margin-top:3rem;}
+</style>
+</head>
+<body>
+<div id="sidebar" class="sidebar">
+<span class="closebtn" onclick="closeSidebar()">&times;</span>
+<a href="index.html"><span>🏠</span> Home</a>
+<a href="dashboard.html"><span>📊</span> Dashboard</a>
+<a href="deposit.html"><span>💰</span> Deposit</a>
+<a href="withdraw.html"><span>💸</span> Withdraw</a>
+<a href="settings.html"><span>⚙️</span> Settings</a>
+<a href="selfservice.html"><span>📞</span> Self Service</a>
+</div>
+<nav>
+<div class="menu" onclick="openSidebar()">☰</div>
+<div class="title">Dashboard</div>
+</nav>
+<div class="dashboard-container">
+<h2>Account Balances</h2>
+<div class="balances">
+<div class="balance-card"><h3>USD Balance</h3><p id="usd-balance">$0.00</p></div>
+<div class="balance-card"><h3>BTC Balance</h3><p id="btc-balance">0 BTC</p></div>
+<div class="balance-card"><h3>ETH Balance</h3><p id="eth-balance">0 ETH</p></div>
+</div>
+<h2>Quick Actions</h2>
+<div class="actions">
+<a href="deposit.html" class="action-btn">Deposit 💰</a>
+<a href="withdraw.html" class="action-btn">Withdraw 💸</a>
+<a href="settings.html" class="action-btn">Settings ⚙️</a>
+</div>
+</div>
+<footer>© 2025 Crypto Invest Platform - All Rights Reserved</footer>
+<script>
+function openSidebar(){document.getElementById("sidebar").style.width="250px";}
+function closeSidebar(){document.getElementById("sidebar").style.width="0";}
+function updateBalances(){
+  document.getElementById("usd-balance").innerText='$'+(localStorage.getItem('USD')||0);
+  document.getElementById("btc-balance").innerText=(localStorage.getItem('BTC')||0)+' BTC';
+  document.getElementById("eth-balance").innerText=(localStorage.getItem('ETH')||0)+' ETH';
+}
+updateBalances();
+</script>
+</body>
+</html>

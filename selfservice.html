@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Self-Service - Crypto Invest</title>
+<style>
+body {
+  margin:0;
+  font-family: Arial,sans-serif;
+  background:#111;
+  color:white;
+}
+/* Navbar */
+nav {
+  background:#222;
+  padding:1rem;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+nav .menu { cursor:pointer; font-size:28px; }
+nav .title { font-size:20px; font-weight:bold; }
+/* Sidebar */
+.sidebar {
+  height:100%;
+  width:0;
+  position:fixed;
+  top:0;
+  left:0;
+  background:#222;
+  overflow-x:hidden;
+  transition:.3s;
+  padding-top:60px;
+  z-index:1000;
+}
+.sidebar a {
+  display:flex;
+  align-items:center;
+  padding:15px 25px;
+  text-decoration:none;
+  font-size:18px;
+  color:#ccc;
+  transition:.3s;
+}
+.sidebar a:hover { background:#333; color:#0f0; }
+.sidebar a span { margin-right:10px; font-size:20px; }
+.sidebar .closebtn { position:absolute; top:10px; right:20px; font-size:30px; cursor:pointer; }
+/* Content */
+.container {
+  max-width:800px;
+  margin:3rem auto;
+  padding:2rem;
+}
+h2 { text-align:center; color:#0f0; margin-bottom:2rem; }
+.faq { margin-bottom:3rem; }
+.faq-item { background:#222; padding:1rem 1.5rem; border-radius:10px; margin-bottom:1rem; cursor:pointer; }
+.faq-item:hover { background:#333; }
+.faq-item h3 { margin:0; }
+.faq-item p { margin:0.5rem 0 0 0; display:none; color:#ccc; }
+/* Contact Form */
+.contact-form { background:#222; padding:2rem; border-radius:12px; box-shadow:0 0 15px rgba(0,255,0,.3);}
+.contact-form label { display:block; margin-top:1rem; margin-bottom:.5rem; }
+.contact-form input, .contact-form textarea { width:100%; padding:.8rem; border:none; border-radius:5px; background:#333; color:white; }
+.contact-form button { display:block; width:100%; padding:1rem; margin-top:1.5rem; background:#0f0; color:black; font-weight:bold; border:none; border-radius:8px; cursor:pointer; transition:.3s; }
+.contact-form button:hover { background:#0c0; }
+footer{background:#222;text-align:center;padding:1rem;color:#888;margin-top:3rem;}
+</style>
+</head>
+<body>
+<div id="sidebar" class="sidebar">
+<span class="closebtn" onclick="closeSidebar()">&times;</span>
+<a href="index.html"><span>🏠</span> Home</a>
+<a href="dashboard.html"><span>📊</span> Dashboard</a>
+<a href="deposit.html"><span>💰</span> Deposit</a>
+<a href="withdraw.html"><span>💸</span> Withdraw</a>
+<a href="settings.html"><span>⚙️</span> Settings</a>
+<a href="selfservice.html"><span>📞</span> Self Service</a>
+</div>
+<nav>
+<div class="menu" onclick="openSidebar()">☰</div>
+<div class="title">Self-Service</div>
+</nav>
+<div class="container">
+<h2>Frequently Asked Questions</h2>
+<div class="faq">
+<div class="faq-item">
+<h3>How do I deposit funds?</h3>
+<p>Go to the Deposit page, choose your currency, enter the amount and click Deposit 💰. Funds will be added to your account instantly.</p>
+</div>
+<div class="faq-item">
+<h3>How do I withdraw profits?</h3>
+<p>Go to the Withdraw page, select the amount and currency, then click Withdraw 💸. Your balance will be updated immediately.</p>
+</div>
+<div class="faq-item">
+<h3>Is my data safe?</h3>
+<p>Yes! All sensitive data is stored securely in your browser and balances are simulated locally in this demo.</p>
+</div>
+<div class="faq-item">
+<h3>What trading platforms do you use?</h3>
+<p>We integrate MT4 and MT5 to provide automated trading strategies for Bitcoin, Ethereum, and USD.</p>
+</div>
+</div>
+<h2>Contact Us</h2>
+<div class="contact-form">
+<label for="name">Name</label>
+<input type="text" id="name" placeholder="Your name">
+<label for="email">Email</label>
+<input type="email" id="email" placeholder="Your email">
+<label for="message">Message</label>
+<textarea id="message" rows="5" placeholder="Your message"></textarea>
+<button onclick="sendMessage()">Send Message 📩</button>
+</div>
+</div>
+<footer>© 2025 Crypto Invest Platform - All Rights Reserved</footer>
+<script>
+function openSidebar(){document.getElementById("sidebar").style.width="250px";}
+function closeSidebar(){document.getElementById("sidebar").style.width="0";}
+// FAQ toggle
+document.querySelectorAll('.faq-item').forEach(item=>{
+  item.addEventListener('click',()=> {
+    const p=item.querySelector('p');
+    p.style.display = (p.style.display==='block') ? 'none':'block';
+  });
+});
+// Contact form (simulation)
+function sendMessage(){
+  const name=document.getElementById('name').value;
+  const email=document.getElementById('email').value;
+  const message=document.getElementById('message').value;
+  if(!name||!email||!message){ alert('Please fill all fields'); return; }
+  alert(`Message sent! Thank you, ${name}`);
+  document.getElementById('name').value='';
+  document.getElementById('email').value='';
+  document.getElementById('message').value='';
+}
+</script>
+</body>
+</html>
